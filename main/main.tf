@@ -13,3 +13,11 @@ provider "azurerm" {
   features {}
 }
 
+resource "azurerm_resource_group" "azlab" {
+  name = var.resourcegroup
+  location = var.location
+  tags = {
+    env = "prod"
+  }
+}
+
