@@ -29,6 +29,8 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
+        working-directory: ./main
 
       - name: Terraform Plan
         run: terraform plan
+        working-directory: ./main
