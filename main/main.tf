@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 3.100" # or latest stable
+      version = "~> 3.117.0" # or latest stable
     }
   }
 
@@ -36,6 +36,12 @@ module "storage" {
 
 module "dns" {
   source = "../modules/DNS"
+  resourcegroup = var.resourcegroup
+  location = var.location
+}
+
+module "appservice" {
+  source = "../modules/appservice"
   resourcegroup = var.resourcegroup
   location = var.location
 }
