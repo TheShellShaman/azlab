@@ -21,3 +21,15 @@ resource "azurerm_resource_group" "azlab" {
   }
 }
 
+module "network" {
+  source = "../modules/network"
+  resourcegroup = var.resourcegroup
+  location = var.location
+}
+
+module "storage" {
+  source = "../modules/storage"
+  resourcegroup = var.resourcegroup
+  location = var.location
+  production-subnet = module.network.production-subnet
+}
