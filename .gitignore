@@ -1,6 +1,7 @@
 # Ignore Terraform state files
 *.tfstate
 *.tfstate.backup
+*.tfplan
 
 # Ignore crash logs
 crash.log

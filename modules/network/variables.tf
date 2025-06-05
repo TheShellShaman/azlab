@@ -1,16 +1,17 @@
 variable "location" {
   type = string
-}
+}   
 
 variable "resourcegroup" {
   type = string
 }
 
-variable "storageaccount" {
+variable "production-vnet" {
   type = string
-  default = "jacobsazlabstorage2"
+  default = "production-vnet"
 }
 
 variable "production-subnet" {
   type = string
+  default = "prodcution-subnet"
 }
