@@ -30,3 +30,8 @@ resource "azurerm_linux_web_app" "linuxwebapp" {
   }
 }
 
+resource "azurerm_role_assignment" "app-to-blob-access" {
+  principal_id = azurerm_linux_web_app.linuxwebapp.identity[0].principal_id
+  scope = var.storageaccountid
+  role_definition_name = "Storage Blob Data Reader"
+}

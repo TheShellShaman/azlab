@@ -44,4 +44,5 @@ module "appservice" {
   source = "../modules/appservice"
   resourcegroup = var.resourcegroup
   location = var.location
+  storageaccountid = module.storage.storageaccountid
 }

@@ -5,3 +5,7 @@ variable "resourcegroup" {
 variable "location" {
   type = string
 }
+
+variable "storageaccountid" {
+  type = string
+}
