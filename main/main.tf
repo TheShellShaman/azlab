@@ -33,3 +33,9 @@ module "storage" {
   location = var.location
   production-subnet = module.network.production-subnet
 }
+
+module "dns" {
+  source = "../modules/DNS"
+  resourcegroup = var.resourcegroup
+  location = var.location
+}
