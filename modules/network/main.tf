@@ -23,4 +23,11 @@ resource "azurerm_subnet" "appservice-subnet" {
   resource_group_name = var.resourcegroup
   virtual_network_name = var.production-vnet
   address_prefixes = [ "10.0.2.0/24" ]
+  delegation {
+    name = "Delegateappservice"
+    service_delegation {
+      name = "Microsoft.Web/serverFarms"
+      actions = ["Microsoft.Network/virtualNetworks/subnets/action"]
+    }
+  }
 }

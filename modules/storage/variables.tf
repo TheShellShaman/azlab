@@ -14,3 +14,7 @@ variable "storageaccount" {
 variable "production-subnet" {
   type = string
 }
+
+variable "appservice_subnet" {
+  type = string 
+}

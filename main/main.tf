@@ -46,5 +46,5 @@ module "appservice" {
   resourcegroup     = var.resourcegroup
   location          = var.location
   storageaccountid  = module.storage.storageaccountid
-  appservice_subnet = module.network.appservice-subnet
+  appservice_subnet = module.network.appservice_subnet
 }

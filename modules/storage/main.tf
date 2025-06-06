@@ -12,6 +12,15 @@ resource "azurerm_storage_account" "storageaccount" {
   }
 }
 
+#web storage account rules
+resource "azurerm_storage_account_network_rules" "storageaccountrules" {
+  storage_account_id = azurerm_storage_account.storageaccount.id
+  default_action = "Deny"
+  bypass = [  ]
+  virtual_network_subnet_ids = [var.appservice_subnet]
+}
+
+#storage endpoint
 resource "azurerm_private_endpoint" "storage-endpoint" {
   name = "storage-endpoint"
   resource_group_name = var.resourcegroup

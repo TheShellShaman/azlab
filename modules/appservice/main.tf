@@ -18,8 +18,7 @@ resource "azurerm_linux_web_app" "linuxwebapp" {
   resource_group_name = var.resourcegroup
   service_plan_id = azurerm_service_plan.appserviceplan.id
   https_only = true
-  virtual_network_subnet_id = var.appservice-subnet
-  
+  virtual_network_subnet_id = var.appservice_subnet
 
     identity {
     type = "SystemAssigned"

@@ -10,6 +10,6 @@ variable "storageaccountid" {
   type = string
 }
 
-variable "appservice-subnet" {
+variable "appservice_subnet" {
   type = string
 }
