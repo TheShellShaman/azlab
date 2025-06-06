@@ -30,9 +30,23 @@ resource "azurerm_linux_web_app" "linuxwebapp" {
   }
 }
 
+#app to blob
 resource "azurerm_role_assignment" "app-to-blob-access" {
   principal_id = azurerm_linux_web_app.linuxwebapp.identity[0].principal_id
   scope = var.storageaccountid
   role_definition_name = "Storage Blob Data Reader"
 }
 
+#customhostname jacobsazlab.com
+resource "azurerm_app_service_custom_hostname_binding" "root_binding" {
+  hostname = "jacobsazlab.com"
+  app_service_name = azurerm_linux_web_app.linuxwebapp.name
+  resource_group_name = var.resourcegroup
+}
+
+#customhostname www.jacobsazlab.com
+resource "azurerm_app_service_custom_hostname_binding" "www_binding" {
+  hostname = "www.jacobsazlab.com"
+  app_service_name = azurerm_linux_web_app.linuxwebapp.name
+  resource_group_name = var.resourcegroup
+}
