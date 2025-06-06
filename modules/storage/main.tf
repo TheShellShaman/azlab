@@ -32,7 +32,7 @@ resource "azurerm_private_endpoint" "storage-endpoint" {
   private_service_connection {
     name = "Connection-to-storageaccount"
     is_manual_connection = false
-    subresource_names = ["blob","file"]
+    subresource_names = ["blob"]
     private_connection_resource_id = azurerm_storage_account.storageaccount.id
   }
   tags = {
@@ -44,6 +44,23 @@ resource "azurerm_private_endpoint" "storage-endpoint" {
 #Container for tfstate
 resource "azurerm_storage_container" "tfstatecontainer" {
   name = "tfstate"
-  storage_account_name = azurerm_storage_account.storageaccount.name
+  storage_account_name = azurerm_storage_account.tfstorage.name
   container_access_type = "private"
+}
+
+#TFSTORAGE account
+resource "azurerm_storage_account" "tfstorage" {
+  name = "tfstoragejacobslab"
+  resource_group_name = var.resourcegroup
+  location = var.location
+  account_replication_type = "LRS"
+  account_tier = "Standard"
+  account_kind = "StorageV2"
+}
+
+#tfstorage account net rules
+resource "azurerm_storage_account_network_rules" "tfstoragenetrules" {
+  storage_account_id = azurerm_storage_account.tfstorage.id
+  default_action = "Allow"
+  ip_rules = ["135.135.180.231"]
 }

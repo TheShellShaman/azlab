@@ -13,7 +13,7 @@ resource "azurerm_service_plan" "appserviceplan" {
 
 #Appservice
 resource "azurerm_linux_web_app" "linuxwebapp" {
-  name = "linuxwebapp"
+  name = "jacobsazlabwebapp"
   location = var.location
   resource_group_name = var.resourcegroup
   service_plan_id = azurerm_service_plan.appserviceplan.id

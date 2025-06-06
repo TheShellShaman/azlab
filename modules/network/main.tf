@@ -18,10 +18,12 @@ resource "azurerm_subnet" "subnet" {
 
 }
 
+#appservice-subnet
 resource "azurerm_subnet" "appservice-subnet" {
   name = var.appservice-subnet
   resource_group_name = var.resourcegroup
   virtual_network_name = var.production-vnet
+  service_endpoints = ["Microsoft.Storage"]
   address_prefixes = [ "10.0.2.0/24" ]
   delegation {
     name = "Delegateappservice"

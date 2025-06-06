@@ -16,7 +16,7 @@ provider "azurerm" {
 terraform {
   backend "azurerm" {
     resource_group_name  = "azlab"
-    storage_account_name = "jacobsazlabstorage2"
+    storage_account_name = "tfstoragejacobslab"
     container_name       = "tfstate"
     key                  = "main.terraform.tfstate"
   }
