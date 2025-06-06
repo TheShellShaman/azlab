@@ -18,6 +18,7 @@ resource "azurerm_storage_account_network_rules" "storageaccountrules" {
   default_action = "Deny"
   bypass = [  ]
   virtual_network_subnet_ids = [var.appservice_subnet]
+  ip_rules = ["135.135.180.231"]
 }
 
 #storage endpoint

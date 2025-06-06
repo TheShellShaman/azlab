@@ -13,6 +13,15 @@ provider "azurerm" {
   features {}
 }
 
+terraform {
+  backend "azurerm" {
+    resource_group_name  = "azlab"
+    storage_account_name = "jacobsazlabstorage2"
+    container_name       = "tfstate"
+    key                  = "main.terraform.tfstate"
+  }
+}
+
 resource "azurerm_resource_group" "azlab" {
   name     = var.resourcegroup
   location = var.location
