@@ -18,3 +18,9 @@ resource "azurerm_subnet" "subnet" {
 
 }
 
+resource "azurerm_subnet" "appservice-subnet" {
+  name = var.appservice-subnet
+  resource_group_name = var.resourcegroup
+  virtual_network_name = var.production-vnet
+  address_prefixes = [ "10.0.2.0/24" ]
+}

@@ -1,10 +1,10 @@
 variable "resourcegroup" {
-  type = string
+  type    = string
   default = "azlab"
 }
 
 variable "location" {
-  type = string
+  type    = string
   default = "centralus"
 }
 

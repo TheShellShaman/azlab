@@ -15,3 +15,8 @@ variable "production-subnet" {
   type = string
   default = "prodcution-subnet"
 }
+
+variable "appservice-subnet" {
+  type = string
+  default = "appservice-subnet"
+}

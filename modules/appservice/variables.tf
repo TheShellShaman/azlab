@@ -9,3 +9,7 @@ variable "location" {
 variable "storageaccountid" {
   type = string
 }
+
+variable "appservice-subnet" {
+  type = string
+}

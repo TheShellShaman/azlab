@@ -14,7 +14,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "azlab" {
-  name = var.resourcegroup
+  name     = var.resourcegroup
   location = var.location
   tags = {
     env = "prod"
@@ -22,27 +22,29 @@ resource "azurerm_resource_group" "azlab" {
 }
 
 module "network" {
-  source = "../modules/network"
+  source        = "../modules/network"
   resourcegroup = var.resourcegroup
-  location = var.location
+  location      = var.location
 }
 
 module "storage" {
-  source = "../modules/storage"
-  resourcegroup = var.resourcegroup
-  location = var.location
+  source            = "../modules/storage"
+  resourcegroup     = var.resourcegroup
+  location          = var.location
   production-subnet = module.network.production-subnet
+  appservice_subnet = module.network.appservice_subnet
 }
 
 module "dns" {
-  source = "../modules/DNS"
+  source        = "../modules/DNS"
   resourcegroup = var.resourcegroup
-  location = var.location
+  location      = var.location
 }
 
 module "appservice" {
-  source = "../modules/appservice"
-  resourcegroup = var.resourcegroup
-  location = var.location
-  storageaccountid = module.storage.storageaccountid
+  source            = "../modules/appservice"
+  resourcegroup     = var.resourcegroup
+  location          = var.location
+  storageaccountid  = module.storage.storageaccountid
+  appservice_subnet = module.network.appservice-subnet
 }
