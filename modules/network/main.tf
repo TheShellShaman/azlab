@@ -31,3 +31,4 @@ resource "azurerm_subnet" "appservice-subnet" {
     }
   }
 }
+
