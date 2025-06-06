@@ -39,3 +39,10 @@ resource "azurerm_private_endpoint" "storage-endpoint" {
   }
   
 }
+
+#Container for tfstate
+resource "azurerm_storage_container" "tfstatecontainer" {
+  name = "tfstate"
+  storage_account_name = azurerm_storage_account.storageaccount.name
+  container_access_type = "private"
+}
