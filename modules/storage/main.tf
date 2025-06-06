@@ -15,7 +15,7 @@ resource "azurerm_storage_account" "storageaccount" {
 #web storage account rules
 resource "azurerm_storage_account_network_rules" "storageaccountrules" {
   storage_account_id = azurerm_storage_account.storageaccount.id
-  default_action = "Deny"
+  default_action = "Allow"
   bypass = [  ]
   virtual_network_subnet_ids = [var.appservice_subnet]
   ip_rules = ["135.135.180.231"]
