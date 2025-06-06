@@ -35,3 +35,4 @@ resource "azurerm_role_assignment" "app-to-blob-access" {
   scope = var.storageaccountid
   role_definition_name = "Storage Blob Data Reader"
 }
+

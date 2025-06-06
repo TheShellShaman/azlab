@@ -21,3 +21,8 @@ crash.log
 # Ignore sensitive or local environment variables
 .terraform.tfvars
 terraform.tfvars
+
+#ignore html, css, js
+.js
+.html
+.css
