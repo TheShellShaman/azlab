@@ -30,6 +30,14 @@ resource "azurerm_resource_group" "azlab" {
   }
 }
 
+resource "azurerm_resource_group" "functionsrg" {
+  name     = var.functionsrg
+  location = var.location
+  tags = {
+    env = "prod"
+  }
+  
+}
 module "network" {
   source        = "../modules/network"
   resourcegroup = var.resourcegroup
