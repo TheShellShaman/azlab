@@ -36,3 +36,11 @@ resource "azurerm_linux_function_app" "highscore_function_app" {
         }
     }
 }
+
+#assign role to function app to access storage account
+resource "azurerm_role_assignment" "func_table_access" {
+  principal_id   = azurerm_linux_function_app.highscore_function_app.identity[0].principal_id
+  scope          = var.storageaccountid
+  role_definition_name = "Storage Table Data Contributor"
+  
+}

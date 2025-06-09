@@ -30,7 +30,7 @@ resource "azurerm_linux_web_app" "linuxwebapp" {
   }
 }
 
-#app to blob
+#app to blob access
 resource "azurerm_role_assignment" "app-to-blob-access" {
   principal_id = azurerm_linux_web_app.linuxwebapp.identity[0].principal_id
   scope = var.storageaccountid
