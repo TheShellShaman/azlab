@@ -13,3 +13,11 @@ variable "storageaccountid" {
 variable "appservice_subnet" {
   type = string
 }
+
+variable "storageaccountname" {
+  type = string  
+}
+
+variable "highscorestablename" {
+  type = string
+}

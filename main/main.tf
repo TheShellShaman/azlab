@@ -56,4 +56,6 @@ module "appservice" {
   location          = var.location
   storageaccountid  = module.storage.storageaccountid
   appservice_subnet = module.network.appservice_subnet
+  storageaccountname = module.storage.storageaccount.name
+  highscorestablename = module.storage.highscorestablename
 }
