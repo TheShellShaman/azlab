@@ -8,9 +8,9 @@ from uuid import uuid4
 
 # Initialize the function app
 def main(req: func.HttpRequest) -> func.HttpResponse:
-    account_url = f"https://{os.environ['jacobsazlabstorage2']}.table.core.windows.net"
+    account_url = f"https://{os.environ['STORAGE_ACCOUNT_NAME']}.table.core.windows.net"
     table_service = TableServiceClient(endpoint=account_url, credential=DefaultAzureCredential())
-    table_client = table_service.get_table_client(os.environ["highscores"])
+    table_client = table_service.get_table_client(os.environ["TABLE_NAME"])
 
     if req.method == "POST":
         try:
