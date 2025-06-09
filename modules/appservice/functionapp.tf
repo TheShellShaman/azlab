@@ -22,7 +22,7 @@ resource "azurerm_linux_function_app" "highscore_function_app" {
   storage_uses_managed_identity = true
   app_settings = {
     "FUNCTIONS_WORKER_RUNTIME" = "python"
-    "STORAGE_ACCOUNT_NAME" = "var.storageaccountname"
+    "STORAGE_ACCOUNT_NAME" = var.storageaccountname
     "TABLE_NAME" = var.highscorestablename
     }
   
