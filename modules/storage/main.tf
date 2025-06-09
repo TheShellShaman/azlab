@@ -12,6 +12,12 @@ resource "azurerm_storage_account" "storageaccount" {
   }
 }
 
+#storage account table for highscores
+resource "azurerm_storage_table" "highscores" {
+  name = "highscores"
+  storage_account_name = azurerm_storage_account.storageaccount.id
+}
+
 #web storage account rules
 resource "azurerm_storage_account_network_rules" "storageaccountrules" {
   storage_account_id = azurerm_storage_account.storageaccount.id
