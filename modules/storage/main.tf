@@ -70,3 +70,4 @@ resource "azurerm_storage_account_network_rules" "tfstoragenetrules" {
   default_action = "Allow"
   ip_rules = ["135.135.180.231"]
 }
+
