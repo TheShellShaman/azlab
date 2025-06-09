@@ -42,3 +42,4 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     else:
         return func.HttpResponse("Method not allowed", status_code=405)
 
+
