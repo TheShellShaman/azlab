@@ -15,7 +15,7 @@ resource "azurerm_storage_account" "storageaccount" {
 #storage account table for highscores
 resource "azurerm_storage_table" "highscores" {
   name = "highscores"
-  storage_account_name = azurerm_storage_account.storageaccount.id
+  storage_account_name = azurerm_storage_account.storageaccount.name
 }
 
 #web storage account rules
