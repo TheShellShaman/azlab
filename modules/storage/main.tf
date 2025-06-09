@@ -6,7 +6,7 @@ resource "azurerm_storage_account" "storageaccount" {
   account_kind = "StorageV2"
   name = var.storageaccount
   account_replication_type = "LRS"
-  public_network_access_enabled = false
+  public_network_access_enabled = true
   tags = {
     env = "prod"
   }
