@@ -6,6 +6,7 @@ import os
 import json
 from uuid import uuid4
 
+# Initialize the function app
 def main(req: func.HttpRequest) -> func.HttpResponse:
     account_url = f"https://{os.environ['jacobsazlabstorage2']}.table.core.windows.net"
     table_service = TableServiceClient(endpoint=account_url, credential=DefaultAzureCredential())
@@ -40,3 +41,4 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             return func.HttpResponse("Error retrieving scores", status_code=500)
     else:
         return func.HttpResponse("Method not allowed", status_code=405)
+
