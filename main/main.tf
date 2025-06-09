@@ -53,6 +53,7 @@ module "dns" {
 module "appservice" {
   source            = "../modules/appservice"
   resourcegroup     = var.resourcegroup
+  functionsrg      = var.functionsrg
   location          = var.location
   storageaccountid  = module.storage.storageaccountid
   appservice_subnet = module.network.appservice_subnet

@@ -8,3 +8,7 @@ variable "location" {
   default = "centralus"
 }
 
+variable "functionsrg" {
+  type = string
+  default = "azlab-functions"
+}

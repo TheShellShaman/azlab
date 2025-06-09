@@ -21,3 +21,7 @@ variable "storageaccountname" {
 variable "highscorestablename" {
   type = string
 }
+
+variable "functionsrg" {
+  type = string  
+}
