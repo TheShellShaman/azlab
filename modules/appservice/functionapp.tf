@@ -32,7 +32,7 @@ resource "azurerm_linux_function_app" "highscore_function_app" {
     site_config {
         minimum_tls_version = "1.2"
         application_stack {
-         python_version = "3.11" 
+         python_version = "3.10" 
         }
     }
 }
