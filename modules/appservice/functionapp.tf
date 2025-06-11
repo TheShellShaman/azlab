@@ -25,6 +25,8 @@ resource "azurerm_linux_function_app" "highscore_function_app" {
     "STORAGE_ACCOUNT_NAME" = "jacobsazlabstorage2"
     "TABLE_NAME" = "highscores"
     "APPLICATIONINSIGHTS_ROLE_NAME" = "highscore-function-app"
+    "APPINSIGHTS_INSTRUMENTATIONKEY" = azurerm_application_insights.function_app_insights.instrumentation_key
+    "APPLICATIONINSIGHTS_CONNECTION_STRING" = azurerm_application_insights.function_app_insights.connection_string
     }
   
   identity {
