@@ -68,7 +68,7 @@ resource "azurerm_storage_account_network_rules" "tfstoragenetrules" {
 
 #functionapp storage account
 resource "azurerm_storage_account" "functionappstorage" {
-  name = "functionappstoragejacobslab"
+  name = "functionstoragejacobslab"
   resource_group_name = var.functionsrg
   location = var.location
   account_replication_type = "LRS"

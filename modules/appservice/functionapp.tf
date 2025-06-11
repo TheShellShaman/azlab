@@ -22,7 +22,7 @@ resource "azurerm_linux_function_app" "highscore_function_app" {
   storage_uses_managed_identity = true
   app_settings = {
     "FUNCTIONS_WORKER_RUNTIME" = "python"
-    "STORAGE_ACCOUNT_NAME" = "functionappstoragejacobslab"
+    "STORAGE_ACCOUNT_NAME" = "functionstoragejacobslab"
     "TABLE_NAME" = "highscores"
     "APPLICATIONINSIGHTS_ROLE_NAME" = "highscore-function-app"
     "APPINSIGHTS_INSTRUMENTATIONKEY" = azurerm_application_insights.function_app_insights.instrumentation_key
