@@ -18,7 +18,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             endpoint=f"https://{storage_account_name}.table.core.windows.net",
             credential=credential
         )
-        table_client = table_service.get_table_client(table_name="HighScores")  # change if needed
+        table_client = table_service.get_table_client(table_name="highscores")  # change if needed
 
         # Try to list entities (just to test permissions)
         entities = list(table_client.list_entities())
