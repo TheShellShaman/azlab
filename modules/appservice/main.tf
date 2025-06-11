@@ -50,3 +50,4 @@ resource "azurerm_app_service_custom_hostname_binding" "www_binding" {
   app_service_name = azurerm_linux_web_app.linuxwebapp.name
   resource_group_name = var.resourcegroup
 }
+

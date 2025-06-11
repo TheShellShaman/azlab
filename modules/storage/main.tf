@@ -12,12 +12,6 @@ resource "azurerm_storage_account" "storageaccount" {
   }
 }
 
-#storage account table for highscores
-resource "azurerm_storage_table" "highscores" {
-  name = "highscores"
-  storage_account_name = azurerm_storage_account.storageaccount.name
-}
-
 #web storage account rules
 resource "azurerm_storage_account_network_rules" "storageaccountrules" {
   storage_account_id = azurerm_storage_account.storageaccount.id
@@ -27,7 +21,7 @@ resource "azurerm_storage_account_network_rules" "storageaccountrules" {
   ip_rules = ["135.135.180.231"]
 }
 
-#storage endpoint
+#web storage endpoint
 resource "azurerm_private_endpoint" "storage-endpoint" {
   name = "storage-endpoint"
   resource_group_name = var.resourcegroup
@@ -71,3 +65,26 @@ resource "azurerm_storage_account_network_rules" "tfstoragenetrules" {
   ip_rules = ["135.135.180.231"]
 }
 
+
+#functionapp storage account
+resource "azurerm_storage_account" "functionappstorage" {
+  name = "functionappstoragejacobslab"
+  resource_group_name = var.functionsrg
+  location = var.location
+  account_replication_type = "LRS"
+  account_tier = "Standard"
+  account_kind = "StorageV2"
+}
+
+#functionapp storage account network rules
+resource "azurerm_storage_account_network_rules" "functionappstoragenetrules" {
+  storage_account_id = azurerm_storage_account.functionappstorage.id
+  default_action = "Allow"
+  bypass = ["AzureServices"]
+}
+
+#functionsstorage account table for highscores
+resource "azurerm_storage_table" "highscores" {
+  name = "highscores"
+  storage_account_name = azurerm_storage_account.functionappstorage.name
+}

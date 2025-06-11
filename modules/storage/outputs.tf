@@ -9,3 +9,7 @@ output "storageaccountname" {
 output "highscorestablename" {
   value = azurerm_storage_table.highscores.name
 }
+
+output "functionsstorageaccountname" {
+  value = azurerm_storage_account.functionappstorage.name
+}

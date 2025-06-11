@@ -18,3 +18,7 @@ variable "production-subnet" {
 variable "appservice_subnet" {
   type = string 
 }
+
+variable "functionsrg" {
+  type = string
+}

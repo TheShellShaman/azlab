@@ -50,6 +50,7 @@ module "storage" {
   location          = var.location
   production-subnet = module.network.production-subnet
   appservice_subnet = module.network.appservice_subnet
+  functionsrg      = var.functionsrg
 }
 
 module "dns" {
