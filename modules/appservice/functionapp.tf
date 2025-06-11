@@ -24,6 +24,7 @@ resource "azurerm_linux_function_app" "highscore_function_app" {
     "FUNCTIONS_WORKER_RUNTIME" = "python"
     "STORAGE_ACCOUNT_NAME" = "jacobsazlabstorage2"
     "TABLE_NAME" = "highscores"
+    "APPLICATIONINSIGHTS_ROLE_NAME" = "highscore-function-app"
     }
   
   identity {
@@ -43,4 +44,17 @@ resource "azurerm_role_assignment" "func_table_access" {
   scope          = var.storageaccountid
   role_definition_name = "Storage Table Data Contributor"
   
+}
+
+
+#Create app insights for function app
+resource "azurerm_application_insights" "function_app_insights" {
+  name                = "function-app-insights"
+  location            = var.location
+  resource_group_name = var.functionsrg
+  application_type    = "web"
+
+  tags = {
+    env = "prod"
+  }
 }
