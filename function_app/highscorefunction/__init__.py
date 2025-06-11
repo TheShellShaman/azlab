@@ -1,43 +1,30 @@
 import logging
+import os
 import azure.functions as func
 from azure.data.tables import TableServiceClient
 from azure.identity import DefaultAzureCredential
-import os
-import json
-from uuid import uuid4
 
-# Initialize the function app
 def main(req: func.HttpRequest) -> func.HttpResponse:
-    account_url = f"https://{os.environ['STORAGE_ACCOUNT_NAME']}.table.core.windows.net"
-    table_service = TableServiceClient(endpoint=account_url, credential=DefaultAzureCredential())
-    table_client = table_service.get_table_client(os.environ["TABLE_NAME"])
+    logging.info('Python HTTP trigger function processed a request.')
 
-    if req.method == "POST":
-        try:
-            data = req.get_json()
-            name = data.get("name", "Anonymous")
-            score = int(data.get("score", 0))
+    # You need your storage account name, NOT the connection string
+    storage_account_name = os.getenv('STORAGE_ACCOUNT_NAME')  # Set in App Settings
+    if not storage_account_name:
+        return func.HttpResponse("Missing STORAGE_ACCOUNT_NAME env var.", status_code=500)
 
-            entity = {
-                "PartitionKey": "highscore",
-                "RowKey": f"{name}-{score}-{uuid4()}",
-                "name": name,
-                "score": score
-            }
-            table_client.create_entity(entity=entity)
-            return func.HttpResponse("Score submitted", status_code=200)
-        except Exception as e:
-            logging.error(f"Error: {e}")
-            return func.HttpResponse("Error submitting score", status_code=500)
+    try:
+        credential = DefaultAzureCredential()
+        table_service = TableServiceClient(
+            endpoint=f"https://{storage_account_name}.table.core.windows.net",
+            credential=credential
+        )
+        table_client = table_service.get_table_client(table_name="HighScores")  # change if needed
 
-    elif req.method == "GET":
-        try:
-            entities = table_client.query_entities("PartitionKey eq 'highscore'")
-            top_scores = sorted(entities, key=lambda x: x['score'], reverse=True)[:10]
-            result = [{"name": e["name"], "score": e["score"]} for e in top_scores]
-            return func.HttpResponse(json.dumps(result), mimetype="application/json", status_code=200)
-        except Exception as e:
-            logging.error(f"Error: {e}")
-            return func.HttpResponse("Error retrieving scores", status_code=500)
-    else:
-        return func.HttpResponse("Method not allowed", status_code=405)
+        # Try to list entities (just to test permissions)
+        entities = list(table_client.list_entities())
+        logging.info(f"Found {len(entities)} entities in HighScores table.")
+
+        return func.HttpResponse("success", status_code=200)
+    except Exception as e:
+        logging.error(f"Error: {e}")
+        return func.HttpResponse(f"Failed: {str(e)}", status_code=500)
