@@ -37,7 +37,7 @@ jobs:
           zip -r ../function_app.zip .
 
       - name: Upload zipped function app as artifact (for debugging)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: function-app-zip
           path: function_app.zip
