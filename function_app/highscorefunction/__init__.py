@@ -1,4 +1,5 @@
 #import necessary libraries
+#comment to rerun the function
 import logging
 import os
 import azure.functions as func
