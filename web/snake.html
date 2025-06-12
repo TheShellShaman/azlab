@@ -12,7 +12,7 @@
     <h1>Jacob's Azure Lab</h1>
     <nav>
       <a href="index.html#about">About Me</a>
-      <a href="index.html#lab">About the Lab</a>
+      <a href="lab.html">About the Lab</a>
       <a href="snake.html">Snake Game</a>
     </nav>
   </header>
@@ -20,17 +20,21 @@
   <main>
     <h1>Snake Game</h1>
     <canvas id="gameCanvas" width="600" height="600"></canvas>
-    <div>
-      <button id="playAgainBtn" style="display:none; margin: 1rem auto; display: block;">Play Again</button>
-      <input type="text" id="playerName" placeholder="Your Name (optional)" />
+    <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 2rem;">
+      <button id="playAgainBtn" style="display:none; margin: 1rem auto;">Play Again</button>
+      <input type="text" id="playerName" placeholder="Your Name (optional)" style="margin-bottom: 1rem;"/>
       <button id="submitScore">Submit Score</button>
     </div>
-    <section>
-      <h2>Top 10 High Scores (Coming Soon :)</h2>
+    <!-- High Scores now appear just beneath the game! -->
+    <section style="max-width: 420px; margin: 0 auto 2rem auto; background: #fff8e1; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.10); padding: 1rem;">
+      <h2>Top 10 High Scores</h2>
       <ol id="leaderboard"></ol>
     </section>
     <a href="index.html">Back to Home</a>
   </main>
+  <footer>
+    <p>&copy; Jacob's Azure Lab</p>
+  </footer>
   <script src="script.js"></script>
 </body>
 </html>
