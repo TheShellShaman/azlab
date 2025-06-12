@@ -31,7 +31,7 @@ function resetGame() {
   dy = 0;
   score = 0;
   document.getElementById("playAgainBtn").style.display = "none";
-  loop = setInterval(gameLoop, 180);
+  loop = setInterval(gameLoop, 225);
 }
 
 // Utility: draw an image rotated at (x, y) cell
@@ -46,12 +46,13 @@ function drawRotatedImage(img, x, y, angleRad) {
 // Calculate rotation for head (default head faces up)
 function getHeadAngle(from, to) {
   if (!from || !to) return 0;
-  if (from.x === to.x && from.y === to.y - 1) return 0; // Up: no rotation
-  if (from.x === to.x && from.y === to.y + 1) return Math.PI; // Down: 180°
-  if (from.x === to.x - 1 && from.y === to.y) return Math.PI / 2; // Right: 90°
-  if (from.x === to.x + 1 && from.y === to.y) return -Math.PI / 2; // Left: -90°
+  if (from.x === to.x && from.y === to.y - 1) return Math.PI; // Up
+  if (from.x === to.x && from.y === to.y + 1) return 0; // Down
+  if (from.x === to.x - 1 && from.y === to.y) return -Math.PI / 2; // Right
+  if (from.x === to.x + 1 && from.y === to.y) return Math.PI / 2; // Left
   return 0;
 }
+
 
 // Calculate rotation for tail (default tail faces up, should point away from previous segment)
 function getTailAngle(prev, tail) {
