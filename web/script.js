@@ -46,10 +46,10 @@ function drawRotatedImage(img, x, y, angleRad) {
 // Calculate rotation for head (default head faces up)
 function getHeadAngle(from, to) {
   if (!from || !to) return 0;
-  if (from.x === to.x && from.y === to.y - 1) return Math.PI; // Up
-  if (from.x === to.x && from.y === to.y + 1) return 0; // Down
-  if (from.x === to.x - 1 && from.y === to.y) return -Math.PI / 2; // Right
-  if (from.x === to.x + 1 && from.y === to.y) return Math.PI / 2; // Left
+  if (from.x === to.x && from.y === to.y - 1) return Math.PI;           // Up
+  if (from.x === to.x && from.y === to.y + 1) return 0;                // Down
+  if (from.x === to.x - 1 && from.y === to.y) return -Math.PI / 2;     // Right
+  if (from.x === to.x + 1 && from.y === to.y) return Math.PI / 2;      // Left
   return 0;
 }
 
