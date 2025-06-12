@@ -31,7 +31,7 @@ function resetGame() {
   dy = 0;
   score = 0;
   document.getElementById("playAgainBtn").style.display = "none";
-  loop = setInterval(gameLoop, 200);
+  loop = setInterval(gameLoop, 180);
 }
 
 // Utility: draw an image rotated at (x, y) cell
@@ -43,16 +43,27 @@ function drawRotatedImage(img, x, y, angleRad) {
   ctx.restore();
 }
 
-function getDirection(from, to) {
-  if (!from || !to) return null;
-  if (from.x === to.x && from.y === to.y - 1) return 0; // Up
-  if (from.x === to.x && from.y === to.y + 1) return Math.PI; // Down
-  if (from.x === to.x - 1 && from.y === to.y) return Math.PI / 2; // Right
-  if (from.x === to.x + 1 && from.y === to.y) return -Math.PI / 2; // Left
-  return 0; // fallback
+// Calculate rotation for head (default head faces up)
+function getHeadAngle(from, to) {
+  if (!from || !to) return 0;
+  if (from.x === to.x && from.y === to.y - 1) return 0; // Up: no rotation
+  if (from.x === to.x && from.y === to.y + 1) return Math.PI; // Down: 180°
+  if (from.x === to.x - 1 && from.y === to.y) return Math.PI / 2; // Right: 90°
+  if (from.x === to.x + 1 && from.y === to.y) return -Math.PI / 2; // Left: -90°
+  return 0;
 }
 
-// For body turns
+// Calculate rotation for tail (default tail faces up, should point away from previous segment)
+function getTailAngle(prev, tail) {
+  if (!prev || !tail) return 0;
+  if (prev.x === tail.x && prev.y === tail.y - 1) return Math.PI;         // Prev is above tail: tail points down
+  if (prev.x === tail.x && prev.y === tail.y + 1) return 0;              // Prev is below tail: tail points up
+  if (prev.x === tail.x - 1 && prev.y === tail.y) return -Math.PI / 2;   // Prev is left: tail points right
+  if (prev.x === tail.x + 1 && prev.y === tail.y) return Math.PI / 2;    // Prev is right: tail points left
+  return 0;
+}
+
+// For body turns (your original logic)
 function getBodyAngle(prev, curr, next) {
   // Straight
   if (prev.x === next.x) return 0; // vertical, face up by default
@@ -165,17 +176,17 @@ function gameLoop() {
   drawGrid();
   drawCell(apple.x, apple.y, "red", "apple");
 
-  // Draw snake with correct directions
+  // Draw snake with correct head and tail direction
   for (let i = 0; i < snake.length; i++) {
     let angle = 0;
     let part = "body";
     if (i === 0) {
-      // Head: direction is from neck to head
-      if (snake.length > 1) angle = getDirection(snake[1], snake[0]);
+      // Head: use head angle
+      if (snake.length > 1) angle = getHeadAngle(snake[1], snake[0]);
       part = "head";
     } else if (i === snake.length - 1) {
-      // Tail: direction is from previous segment to tail
-      if (snake.length > 1) angle = getDirection(snake[snake.length - 2], snake[i]);
+      // Tail: use tail angle
+      if (snake.length > 1) angle = getTailAngle(snake[snake.length - 2], snake[i]);
       part = "tail";
     } else {
       // Body: direction is based on neighbors
@@ -219,4 +230,5 @@ fetch("https://YOUR-FUNCTION-APP.azurewebsites.net/api/highscore")
     });
   });
 
-  document.getElementById("playAgainBtn").addEventListener("click", resetGame);
+// Listen for play again
+document.getElementById("playAgainBtn").addEventListener("click", resetGame);
