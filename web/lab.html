@@ -1,0 +1,63 @@
+<!-- lab.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About the Lab | Jacob's Azure Lab</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Jacob's Azure Lab</h1>
+    <nav>
+      <a href="index.html#about">About Me</a>
+      <a href="lab.html">About the Lab</a>
+      <a href="snake.html">Snake Game</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>About the Lab</h2>
+    <p>
+      Welcome to the technical breakdown! This page details how this lab is architected, the Azure services used, and how everything is tied together using Terraform and CI/CD.
+    </p>
+
+    <h3>Architecture Overview</h3>
+    <ul>
+      <li><strong>Azure App Service</strong> – Hosts the main website frontend</li>
+      <li><strong>Azure Blob Storage</strong> – Stores static site assets and backend game data</li>
+      <li><strong>Azure Functions</strong> – Handles serverless backend logic (like high scores)</li>
+      <li><strong>Azure Managed Identity</strong> – Secure resource access (no secrets in code!)</li>
+      <li><strong>Azure DNS</strong> – Manages the jacobsazlab.com domain and routing</li>
+      <li><strong>GitHub Actions</strong> – Automates infrastructure deployment and updates using Terraform</li>
+    </ul>
+
+    <h3>Key Features & Practices</h3>
+    <ul>
+      <li>Fully deployed and managed with <strong>Terraform</strong> (Infrastructure as Code)</li>
+      <li>Managed Identities for secure, passwordless resource access</li>
+      <li>Automated CI/CD pipeline: push to main = deploy infrastructure</li>
+      <li>Custom domain (jacobsazlab.com) managed by Azure DNS, registrar is squarespace</li>
+      <li>Low monthly cost (< $30/month, intentionally overengineered for learning)</li>
+    </ul>
+
+    <h3>Infrastructure Diagram</h3>
+    <p>
+      <em>Diagram loading...</em>
+    </p>
+
+    <h3>More Details</h3>
+    <ul>
+      <li><strong>App Service</strong>: Linux B1, runs the public web site. Secure settings, custom domain, HTTPS enforced.</li>
+      <li><strong>Azure Function</strong>: Used for backend logic like saving and reading snake game high scores. Uses managed identity to access storage. (still working on this)</li>
+      <li><strong>CI/CD</strong>: GitHub Actions handles all Terraform deployments and code pushes, with RBAC and state management handled securely.</li>
+    </ul>
+
+    <h3>Source Code & Infrastructure</h3>
+    <p>
+      All code and Terraform for this project is public:  
+      <a href="https://github.com/TheShellShaman/azlab" target="_blank">GitHub Repository</a>
+    </p>
+
+    <h3>What’s Next? I'm going to keep adding diagrams on information flow and keep adding complexity. (logging, pushing azure app data to website, making snake game better, etc)</h
