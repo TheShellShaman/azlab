@@ -23,6 +23,17 @@ snakeTailImg.src = 'snake_tail.png';
 const appleImg = new Image();
 appleImg.src = 'apple.png';
 
+// Reset game on button click
+function resetGame() {
+  snake = [{ x: 10, y: 10 }];
+  apple = { x: 5, y: 5 };
+  dx = 0;
+  dy = 0;
+  score = 0;
+  document.getElementById("playAgainBtn").style.display = "none";
+  loop = setInterval(gameLoop, 200);
+}
+
 // Utility: draw an image rotated at (x, y) cell
 function drawRotatedImage(img, x, y, angleRad) {
   ctx.save();
@@ -140,6 +151,7 @@ function gameLoop() {
   ) {
     clearInterval(loop);
     alert("Game over! Score: " + score);
+    document.getElementById("playAgainBtn").style.display = "block";
     return;
   }
 
@@ -175,7 +187,7 @@ function gameLoop() {
 }
 
 // Slow down the game!
-let loop = setInterval(gameLoop, 200);
+let loop = setInterval(gameLoop, 180);
 
 // Direction controls
 document.addEventListener("keydown", e => {
@@ -206,3 +218,5 @@ fetch("https://YOUR-FUNCTION-APP.azurewebsites.net/api/highscore")
       leaderboard.appendChild(li);
     });
   });
+
+  document.getElementById("playAgainBtn").addEventListener("click", resetGame);
