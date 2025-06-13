@@ -203,3 +203,8 @@ footer {
   color: #444;
   padding-bottom: 0.5em;
 }
+
+.aboutme-text {
+  max-width: 900px;  /* Or however wide you want */
+  flex: 2 1 600px;   /* Optionally, give it a bit more space than the image */
+}
