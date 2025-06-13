@@ -16,21 +16,26 @@
       <a href="snake.html">Snake Game</a>
     </nav>
   </header>
-
- <main class="snake-main">
-  <h1>Snake Game</h1>
-  <section class="snake-leaderboard" style="margin-bottom: 2rem;">
-    <h2 style="margin-top:0;">Top 10 High Scores (Coming Soon :)</h2>
-    <ol id="leaderboard"></ol>
-  </section>
-  <canvas id="gameCanvas" width="600" height="600"></canvas>
-  <div class="snake-controls">
-    <button id="playAgainBtn" style="display:none; margin: 1rem auto;">Play Again</button>
-    <input type="text" id="playerName" placeholder="Your Name (optional)" style="margin-bottom: 1rem;"/>
-    <button id="submitScore">Submit Score</button>
-  </div>
-  <a href="index.html">Back to Home</a>
-<main>
+  <main class="snake-main">
+    <div class="snake-layout">
+      <div class="snake-sidebar">
+        <h1>Snake Game</h1>
+        <section class="snake-leaderboard">
+          <h2 style="margin-top:0;">Top 10 High Scores (Coming Soon :)</h2>
+          <ol id="leaderboard"></ol>
+        </section>
+      </div>
+      <div class="snake-game-container">
+        <canvas id="gameCanvas" width="600" height="600"></canvas>
+        <div class="snake-controls">
+          <button id="playAgainBtn" style="display:none; margin: 1rem auto;">Play Again</button>
+          <input type="text" id="playerName" placeholder="Your Name (optional)" style="margin-bottom: 1rem;"/>
+          <button id="submitScore">Submit Score</button>
+        </div>
+      </div>
+    </div>
+    <a href="index.html">Back to Home</a>
+  </main>
   <footer>
     <p>&copy; Jacob's Azure Lab</p>
   </footer>
