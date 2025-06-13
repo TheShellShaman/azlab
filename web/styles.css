@@ -196,3 +196,10 @@ footer {
 .diagram-text li {
   margin-bottom: 0.5em; /* Adds a little space between bullet points */
 }
+
+.diagram-placeholder {
+  min-height: 5em;    /* Gives you 4-5 lines of space for text */
+  font-size: 1.08em;
+  color: #444;
+  padding-bottom: 0.5em;
+}
