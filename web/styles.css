@@ -142,14 +142,14 @@ footer {
 }
 
 .diagram-image img {
-  max-width: 100%;
-  width: 520px;       /* Set your desired default width */
+  max-width: none;        /* Allow actual size */
+  width: 650px;           /* Make the image larger */
   height: auto;
   border: 1px solid #ccc;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  margin-top: 32px;   /* Nudge image down */
-  margin-left: 20px;  /* Nudge image right */
+  margin-top: 48px;       /* Move image further down */
+  margin-left: 44px;      /* Move image further right */
   cursor: zoom-in;
   transition: box-shadow 0.2s;
 }
@@ -169,5 +169,19 @@ footer {
     max-width: 99vw;
     margin-left: 0;
     margin-top: 16px;
+  }
+}
+
+@media (max-width: 900px) {
+  .diagram-section {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .diagram-image img {
+    width: 97vw !important;
+    max-width: 99vw !important;
+    margin-left: 0 !important;
+    margin-top: 16px !important;
   }
 }
