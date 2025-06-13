@@ -43,21 +43,26 @@
     </ul>
 
     <h3>Infrastructure Diagrams</h3>
+    <!-- Terraform to Azure CI/CD Flow -->
     <div class="diagram-section">
-     <div class="diagram-text">
-  <h4>Terraform to Azure CI/CD Flow</h4>
-  <ul>
-    <li>Make Terraform changes locally in VSCode on my machine.</li>
-    <li>Run <code>terraform plan</code> to review proposed changes and verify syntax.</li>
-    <li>My account reaches out to the storage account hosting the Terraform state file for planning.</li>
-    <li>Access is managed via RBAC permissions on the storage account.</li>
-    <li>Once satisfied with the plan, push changes to my GitHub repo.</li>
-    <li>GitHub Actions workflow is triggered, running <code>terraform apply</code> against the Azure environment.</li>
-    <li>GitHub Actions uses RBAC permissions (service principal) to deploy/update resources in Azure.</li>
-  </ul>
-</div>
- <div class="diagram-section">
-  <div class="diagram-text">
+      <div class="diagram-text">
+        <h4>Terraform to Azure CI/CD Flow</h4>
+        <ul>
+          <li>Make Terraform changes locally in VSCode on my machine.</li>
+          <li>Run <code>terraform plan</code> to review proposed changes and verify syntax.</li>
+          <li>My account reaches out to the storage account hosting the Terraform state file for planning.</li>
+          <li>Access is managed via RBAC permissions on the storage account.</li>
+          <li>Once satisfied with the plan, push changes to my GitHub repo.</li>
+          <li>GitHub Actions workflow is triggered, running <code>terraform apply</code> against the Azure environment.</li>
+          <li>GitHub Actions uses RBAC permissions (service principal) to deploy/update resources in Azure.</li>
+        </ul>
+      </div>
+      <div class="diagram-image">
+        <a href="TF_buildout.png" target="_blank" title="View full size diagram">
+          <img src="TF_buildout.png" alt="Terraform to Azure CI/CD flow diagram" />
+        </a>
+      </div>
+    </div>
     <h4>Web Deployment Flow</h4>
     <ul>
       <li>Make website .html, .js, .css changes with the help of AI overlords (I don’t know js or html really; I’m a network/systems engineer who just learned terraform and python some).</li>
