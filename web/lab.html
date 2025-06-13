@@ -16,7 +16,6 @@
       <a href="snake.html">Snake Game</a>
     </nav>
   </header>
-
   <main>
     <h2>About the Lab</h2>
     <p>
@@ -24,57 +23,32 @@
     </p>
 
     <h3>Architecture Overview</h3>
-    <ul>
-      <li><strong>Azure App Service</strong> – Hosts the main website frontend</li>
-      <li><strong>Azure Blob Storage</strong> – Stores static site assets and backend game data</li>
-      <li><strong>Azure Functions</strong> – Handles serverless backend logic (like high scores)</li>
-      <li><strong>Azure Managed Identity</strong> – Secure resource access (no secrets in code!)</li>
-      <li><strong>Azure DNS</strong> – Manages the jacobsazlab.com domain and routing</li>
-      <li><strong>GitHub Actions</strong> – Automates infrastructure deployment and updates using Terraform</li>
-    </ul>
+    <!-- ...rest of your architecture content... -->
 
-    <h3>Key Features & Practices</h3>
-    <ul>
-      <li>Fully deployed and managed with <strong>Terraform</strong> (Infrastructure as Code)</li>
-      <li>Managed Identities for secure, passwordless resource access</li>
-      <li>Automated CI/CD pipeline: push to main = deploy infrastructure</li>
-      <li>Custom domain (jacobsazlab.com) managed by Azure DNS, registrar is squarespace</li>
-      <li>Low monthly cost (< $30/month, intentionally overengineered for learning)</li>
-    </ul>
+    <h3>Infrastructure Diagrams</h3>
+    <div class="diagram-section">
+      <div class="diagram-text">
+        <h4>Terraform to Azure CI/CD Flow</h4>
+        <p>
+          This diagram illustrates how the CI/CD pipeline works to push out my infrastructure changes to Azure using Terraform.
+          Initially, the changes are made on my local machine with VSCode.
+          Once I have the Terraform where I want it and think it is ready to be pushed live, I run a terraform plan to see what changes will be made, and to verify syntax.
+          When this happens, my account reaches out to the storage account that is hosting the terraform state file to perform the TF plan.
+          Access is allowed through RBAC permissions that I have setup for the storage account.
+          Once I am happy with the terraform plan, I push the changes to my GitHub repo.
+          The GitHub Actions workflow is triggered, which runs the Terraform apply command against Azure Environment.
+          GitHub Actions uses RBAC permissions given to the GitHub Actions service principal to access the Azure resources and apply the changes.
+        </p>
+      </div>
+      <div class="diagram-image">
+        <a href="TF_buildout.png" target="_blank" title="View full size diagram">
+          <img src="TF_buildout.png" alt="Terraform to Azure CI/CD flow diagram" />
+        </a>
+      </div>
+    </div>
 
-  <h3>Infrastructure Diagrams</h3>
-<div class="diagram-section" style="display: flex; align-items: flex-start; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap;">
-  <div class="diagram-text" style="flex: 1; min-width: 260px;">
-    <h4>Terraform to Azure CI/CD Flow</h4>
-    <p>
-            This diagram illustrates how the CI/CD pipeline works to push out my infrastructure changes to Azure using Terraform.
-            Initially, the changes are made on my local machine with vscode.
-            Once I have the Terraform where I want it and think it is ready to be pushed live, I run a terraform plan to see what changes will be made, and to verify syntax.
-            When this happnes, my account reaches out to the storage account that is hosting the terraform state file to perform the TF plan.
-            Access is allowed through RBAC permissions that I have setup for the storage account.
-            Once I am happy with the terraform plan, I push the changes to my GitHub repo.
-            The GitHub Actions workflow is triggered, which runs the Terraform apply command against Azure Environment.
-            Github Actions uses RBAC permissions given to the GitHub Actions service principal to access the Azure resources and apply the changes.
+    <!-- ...rest of your file remains unchanged... -->
 
-    </p>
-  </div>
-  <div class="diagram-image" style="flex: 1; min-width: 260px; text-align: center;">
-    <img src="TF_buildout.png" alt="Terraform to Azure CI/CD flow diagram" style="max-width: 100%; height: auto; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
-  </div>
-</div>
-
-
-    <h3>More Details</h3>
-    <ul>
-      <li><strong>App Service</strong>: Linux B1, runs the public web site. Secure settings, custom domain, HTTPS enforced.</li>
-      <li><strong>Azure Function</strong>: Used for backend logic like saving and reading snake game high scores. Uses managed identity to access storage. (still working on this)</li>
-      <li><strong>CI/CD</strong>: GitHub Actions handles all Terraform deployments and code pushes, with RBAC and state management handled securely.</li>
-    </ul>
-
-    <h3>Source Code & Infrastructure</h3>
-    <p>
-      All code and Terraform for this project is public:  
-      <a href="https://github.com/TheShellShaman/azlab" target="_blank">GitHub Repository</a>
-    </p>
-
-    <h3>What’s Next? I'm going to keep adding diagrams on information flow and keep adding complexity. (logging, pushing azure app data to website, making snake game better, etc)</h
+  </main>
+</body>
+</html>
