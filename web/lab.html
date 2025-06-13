@@ -42,10 +42,27 @@
       <li>Low monthly cost (< $30/month, intentionally overengineered for learning)</li>
     </ul>
 
-    <h3>Infrastructure Diagram</h3>
+  <h3>Infrastructure Diagrams</h3>
+<div class="diagram-section" style="display: flex; align-items: flex-start; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap;">
+  <div class="diagram-text" style="flex: 1; min-width: 260px;">
+    <h4>Terraform to Azure CI/CD Flow</h4>
     <p>
-      <em>Diagram loading...</em>
+            This diagram illustrates how the CI/CD pipeline works to push out my infrastructure changes to Azure using Terraform.
+            Initially, the changes are made on my local machine with vscode.
+            Once I have the Terraform where I want it and think it is ready to be pushed live, I run a terraform plan to see what changes will be made, and to verify syntax.
+            When this happnes, my account reaches out to the storage account that is hosting the terraform state file to perform the TF plan.
+            Access is allowed through RBAC permissions that I have setup for the storage account.
+            Once I am happy with the terraform plan, I push the changes to my GitHub repo.
+            The GitHub Actions workflow is triggered, which runs the Terraform apply command against Azure Environment.
+            Github Actions uses RBAC permissions given to the GitHub Actions service principal to access the Azure resources and apply the changes.
+
     </p>
+  </div>
+  <div class="diagram-image" style="flex: 1; min-width: 260px; text-align: center;">
+    <img src="TF_buildout.png" alt="Terraform to Azure CI/CD flow diagram" style="max-width: 100%; height: auto; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
+  </div>
+</div>
+
 
     <h3>More Details</h3>
     <ul>
