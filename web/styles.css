@@ -211,6 +211,6 @@ footer {
 
 /* For enlarging lab.html diagrams */
 .diagram-image img.enlarge-diagram {
-  width: 520px;      
+  width: 560px;      
   max-width: 95vw;   /* never overflow viewport */
 }
