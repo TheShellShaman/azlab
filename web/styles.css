@@ -205,6 +205,12 @@ footer {
 }
 
 .aboutme-text {
-  max-width: 900px;  /* Or however wide you want */
+  max-width: 900px;  
   flex: 2 1 600px;   /* Optionally, give it a bit more space than the image */
+}
+
+/* For enlarging lab.html diagrams */
+.diagram-image img.enlarge-diagram {
+  width: 520px;      
+  max-width: 95vw;   /* never overflow viewport */
 }
