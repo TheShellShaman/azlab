@@ -18,7 +18,7 @@ nav a {
 }
 main {
   padding: 2rem;
-  max-width: 1300px;
+  max-width: 950px;
   margin: 0 auto;
 }
 canvas {
@@ -143,7 +143,7 @@ footer {
 
 .diagram-image img {
   max-width: none;        /* Allow actual size */
-  width: 650px;           /* Make the image larger */
+  width: 400px;           /* Make the image larger */
   height: auto;
   border: 1px solid #ccc;
   border-radius: 10px;
